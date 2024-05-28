@@ -1,0 +1,216 @@
+
+:root {
+    --black: #272727;
+  }
+  
+  html {
+    /* border-box box model allows us to add padding and border to our elements without increasing their size */
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, Helvetica,
+      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 900;
+    font-size: 10px;
+    color: var(--black);
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+  }
+  
+  /*
+    We inherit box-sizing: border-box; from our <html> selector
+    Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
+  */
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    
+    background-image: url("../assets/images/topography.svg"), linear-gradient(110deg, #f93d66, #6d47d9);
+  
+    background-size: 340px, auto;
+    min-height: calc(100vh - 100px);
+    margin: 10px 30px;
+    /* background: white; */
+    background-attachment: fixed;
+    letter-spacing: -1px;
+  }
+  
+  
+  h1{
+    font-size: 3vw;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 5px 0;
+  }
+
+  h6{
+    font-size: 1vw;
+    margin-left: 10px ;
+  }
+
+  /* Each item in our grid will contain numbers */
+  .item {
+    /* We center the contents of these items. You can also do this with flexbox too! */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid rgba(0, 0, 0, 0.03);
+    border-radius: 3px;
+    font-size: 35px;
+    background-color: rgba(243, 243, 243, 0.3);
+  }
+  
+  .item p {
+    margin: 0 5px 5px 10px;
+    font-size: 2vw;
+  }
+
+  /** Actual style of the website **/
+
+  .container {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 3fr 10fr 2fr 2f;
+    grid-template-rows: auto auto auto auto;
+    grid-auto-rows: 70px;
+    grid-template-areas:
+      "sidebar-1  content   sidebar-2   sidebar-3"
+      "sidebar-1  content   sidebar-2   sidebar-3"
+      "sidebar-1  footer    footer      footer"
+  }
+
+  .profile{
+    border-radius: 20%;
+    width: 15vw;
+    place-self: center;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+  }
+
+  .content {
+    grid-area: content;
+    display: grid;
+  }
+ 
+  .item1 {
+    grid-area: sidebar-1;
+  }
+  .item2 {
+    grid-area: sidebar-2;
+  }
+
+  .item3 {
+    grid-area: sidebar-3;
+  }
+
+  .footer {
+    grid-area: footer;
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+
+  
+
+  .footer a{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+  
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:active {
+    text-decoration: underline;
+  }
+ 
+  .logos{
+
+    width: 3vw;
+    place-self: center;
+
+    margin: 1vw 1vw 1vw 1vw;
+  }
+
+  .app-screenshots{
+    width: 16vw;
+    place-self: center;
+    border-radius: 1%;
+    margin: 1vw 1vw 1vw 1vw;
+  }
+  
+
+
+  @media (max-width: 1300px) {
+    .item p {
+      font-size: 20px;
+    }
+
+    h6{
+      font-size: 13px;
+    }
+
+    .logos{
+      width: 35px;
+    }
+
+    .footer a{
+      font-size: 19px;
+    }
+  }
+
+
+  @media (max-width: 1100px) {
+    .container {
+      grid-template-areas:
+        "content    content     content   content"
+        "sidebar-2  sidebar-2   sidebar-3 sidebar-3"
+        "sidebar-1  sidebar-1   sidebar-1 sidebar-1"
+        "footer     footer      footer    footer"
+    }
+
+    h1{
+      font-size: 25px;
+    }
+
+    .profile{
+      width: 110px;
+    }
+
+    .app-screenshots{
+      width: 300px;
+    }
+
+    .footer a{
+      font-size: 18px;
+    }
+  }
+
+
+
+  @media (max-width: 750px) {
+    .container {
+      grid-template-areas:
+        "content    content     content   content"
+        "sidebar-3  sidebar-3   sidebar-3 sidebar-3"
+        "sidebar-2  sidebar-2   sidebar-2 sidebar-2"
+        "sidebar-1  sidebar-1   sidebar-1 sidebar-1"
+        "footer     footer      footer    footer"
+    }
+
+    body{
+      margin: 10px 10px;
+    }
+  }
