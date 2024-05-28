@@ -1,216 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-:root {
-    --black: #272727;
-  }
-  
-  html {
-    /* border-box box model allows us to add padding and border to our elements without increasing their size */
-    box-sizing: border-box;
-    font-family: "Segoe UI", Roboto, Helvetica,
-      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight: 900;
-    font-size: 10px;
-    color: var(--black);
-    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
-  }
-  
-  /*
-    We inherit box-sizing: border-box; from our <html> selector
-    Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
-  */
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  
-  body {
-    
-    background-image: url("../assets/images/topography.svg"), linear-gradient(110deg, #f93d66, #6d47d9);
-  
-    background-size: 340px, auto;
-    min-height: calc(100vh - 100px);
-    margin: 10px 30px;
-    /* background: white; */
-    background-attachment: fixed;
-    letter-spacing: -1px;
-  }
-  
-  
-  h1{
-    font-size: 3vw;
-  }
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 5px 0;
-  }
+.container {
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  max-width: 800px;
+  width: 100%;
+}
 
-  h6{
-    font-size: 1vw;
-    margin-left: 10px ;
-  }
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2em;
+}
 
-  /* Each item in our grid will contain numbers */
-  .item {
-    /* We center the contents of these items. You can also do this with flexbox too! */
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    border: 5px solid rgba(0, 0, 0, 0.03);
-    border-radius: 3px;
-    font-size: 35px;
-    background-color: rgba(243, 243, 243, 0.3);
-  }
-  
-  .item p {
-    margin: 0 5px 5px 10px;
-    font-size: 2vw;
-  }
+.profile-pic {
+  flex: 0 0 100px;
+  margin-right: 1em;
+}
 
-  /** Actual style of the website **/
+.profile-pic img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-  .container {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: 3fr 10fr 2fr 2f;
-    grid-template-rows: auto auto auto auto;
-    grid-auto-rows: 70px;
-    grid-template-areas:
-      "sidebar-1  content   sidebar-2   sidebar-3"
-      "sidebar-1  content   sidebar-2   sidebar-3"
-      "sidebar-1  footer    footer      footer"
-  }
+.header-content {
+  flex: 1;
+}
 
-  .profile{
-    border-radius: 20%;
-    width: 15vw;
-    place-self: center;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-  }
+.header-content h1 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
 
-  .content {
-    grid-area: content;
-    display: grid;
-  }
- 
-  .item1 {
-    grid-area: sidebar-1;
-  }
-  .item2 {
-    grid-area: sidebar-2;
-  }
+.location {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 1em;
+}
 
-  .item3 {
-    grid-area: sidebar-3;
-  }
+.headers a {
+  color: #333;
+  text-decoration: none;
+  margin-right: 0.5em;
+  font-size: 1.2em;
+}
 
-  .footer {
-    grid-area: footer;
-    display: grid;
-    grid-template-columns: auto auto auto;
-  }
+.headers a:hover {
+  color: #0073e6;
+}
 
-  
+.content section {
+  margin-bottom: 2em;
+}
 
-  .footer a{
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-  
-  }
+.content h2 {
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5em;
+}
 
-  a:link {
-    text-decoration: none;
-  }
-  
-  a:visited {
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  a:active {
-    text-decoration: underline;
-  }
- 
-  .logos{
+.blog-list {
+  list-style-type: none;
+}
 
-    width: 3vw;
-    place-self: center;
+.blog-list li {
+  margin-bottom: 1em;
+}
 
-    margin: 1vw 1vw 1vw 1vw;
-  }
+.blog-list a {
+  text-decoration: none;
+  color: #0073e6;
+  font-size: 1.1em;
+}
 
-  .app-screenshots{
-    width: 16vw;
-    place-self: center;
-    border-radius: 1%;
-    margin: 1vw 1vw 1vw 1vw;
-  }
-  
+.blog-list a:hover {
+  text-decoration: underline;
+}
 
+.project-list {
+  list-style-type: none;
+}
 
-  @media (max-width: 1300px) {
-    .item p {
-      font-size: 20px;
-    }
+.project-list li {
+  margin-bottom: 1.5em;
+}
 
-    h6{
-      font-size: 13px;
-    }
+.project-link {
+  text-decoration: none;
+  color: #0073e6;
+  font-size: 1.1em;
+  font-weight: bold;
+}
 
-    .logos{
-      width: 35px;
-    }
+.project-link:hover {
+  text-decoration: underline;
+}
 
-    .footer a{
-      font-size: 19px;
-    }
-  }
+.project-list p {
+  margin-top: 0.5em;
+  color: #666;
+  font-size: 0.9em;
+}
 
+.link-item {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 1em;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
 
-  @media (max-width: 1100px) {
-    .container {
-      grid-template-areas:
-        "content    content     content   content"
-        "sidebar-2  sidebar-2   sidebar-3 sidebar-3"
-        "sidebar-1  sidebar-1   sidebar-1 sidebar-1"
-        "footer     footer      footer    footer"
-    }
+.link-title {
+  text-decoration: none;
+  color: #0073e6;
+  font-size: 1.1em;
+}
 
-    h1{
-      font-size: 25px;
-    }
+.link-title:hover {
+  text-decoration: underline;
+}
 
-    .profile{
-      width: 110px;
-    }
-
-    .app-screenshots{
-      width: 300px;
-    }
-
-    .footer a{
-      font-size: 18px;
-    }
-  }
-
-
-
-  @media (max-width: 750px) {
-    .container {
-      grid-template-areas:
-        "content    content     content   content"
-        "sidebar-3  sidebar-3   sidebar-3 sidebar-3"
-        "sidebar-2  sidebar-2   sidebar-2 sidebar-2"
-        "sidebar-1  sidebar-1   sidebar-1 sidebar-1"
-        "footer     footer      footer    footer"
-    }
-
-    body{
-      margin: 10px 10px;
-    }
-  }
+.link-item p {
+  font-size: 0.9em;
+  color: #666;
+}
