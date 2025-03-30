@@ -4,83 +4,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
-  <title>Alvaro Lloret </title>
-
+  <title>Something big is coming...</title>
 </head>
 
 <body>
 
-  <!-- -->
   <div class="container">
-    <div class="header">
-      <div class="profile-pic">
-        <img src="./assets/images/profile.png" alt="Profile Picture">
-      </div>
-      <div class="header-content">
-        <h1>Alvaro Lloret</h1>
-        <p class="location">Madrid, Spain</p>
-        <div class="headers">
-          <a href="#blog">Blog</a>
-          <a href="#projects">Projects</a>
-          <a href="#links">Links</a>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-      <!-- -->
-      <section id="about" class="about">
-        <h2>About</h2>
-        <p>Software engineer striving for freedom. I write about exciting new technologies and things I've thought about a million times.
-          Currently into storytelling, design and AI. Always learning something new.
-        </p>
-      </section>
-      <!-- -->
-      <section id="blog" class="blog">
-        <h2>Blog</h2>
-        <ul class="blog-list">
-          <li><a href="./blog/WhySaaSIsntTheEasiestPathToSuccess.html">Why SaaS isn't the 'easiest' path to success. 10-09-24</a></li>
-          <li><a href="./blog/StopThinkingAndStartBuilding.html">Stop thinking and start building. 11-06-24</a></li>
-          <li><a href="./blog/CreatingSomethingForYourself.html">Creating something for yourself. 27-05-24</a></li>
-        </ul>
-      </section>
-      <!-- -->
-      <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <h4>Coming soon...</h4>
-        <br>
-        <!-- <ul class="project-list">
-          <li>
-            <a href="#" class="project-link">Tech Project A</a>
-            <p>A brief description of Tech Project A.</p>
-          </li>
-          <li>
-            <a href="#" class="project-link">Design Project B</a>
-            <p>A brief description of Design Project B.</p>
-          </li>
-          <li>
-            <a href="#" class="project-link">Energy Project C</a>
-            <p>A brief description of Energy Project C.</p>
-          </li>
-        </ul> -->
-      </section>
-      <!-- -->
-      <section id="links" class="links">
-        <h2>Links</h2>
-        <div class="link-item">
-          <h4><a href="https://x.com/AlvaroLloret_" class="link-title">Twitter - X</a></h4>
-          <p>Here I post about the things I find interesting</p>
-          <p>Feel free to contact me here, always willing to chat</p>
-        </div>
-        <div class="link-item">
-          <h4><a href="https://www.youtube.com/@AlvaroLloret" class="link-title">YouTube Channel</a></h4>
-          <p>My videos on tech projects</p>
-        </div>
-      </section>
-      <!-- -->
-    </div>
+    <h1>PROJECT: <span id="dynamic-name">HORIZON</span></h1>
+    <p>Boundless intelligence converges.</p>
+    <p>Interact with emergent <span class="highlight">potential</span>. Shape what's next.</p>
+    <p>The canvas awaits. Creation is infinite.</p>
+    <!-- Add more hype content here -->
   </div>
-  <!-- -->
+
+  <!-- Coordinate Display Element -->
+  <div id="coords-display">x: 0, y: 0</div>
+
+  <!-- Background Keywords Container (optional, can append directly to body) -->
+  <div id="keywords-container"></div>
+
+  <!-- Add JavaScript for character animation -->
+  <script>
+    const targetElement = document.getElementById('dynamic-name');
+    // Simplified character set for a cleaner look
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-";
+    const nameLength = 7; // Length of "HORIZON"
+    // Slower update interval for a smoother feel
+    const updateInterval = 200; // Milliseconds between updates
+
+    let intervalId = null;
+
+    function generateRandomString(length) {
+      let result = '';
+      const charactersLength = chars.length;
+      for ( let i = 0; i < length; i++ ) {
+        result += chars.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    }
+
+    function updateText() {
+        if (targetElement) {
+            targetElement.textContent = generateRandomString(nameLength);
+        }
+    }
+
+    // Start the animation
+    intervalId = setInterval(updateText, updateInterval);
+
+    // --- Coordinate Display Logic --- 
+    const coordsDisplay = document.getElementById('coords-display');
+
+    function updateCoords(event) {
+        if (coordsDisplay) {
+            coordsDisplay.textContent = `x: ${event.clientX}, y: ${event.clientY}`;
+        }
+    }
+
+    window.addEventListener('mousemove', updateCoords);
+
+    // --- Background Keywords Logic --- 
+    document.addEventListener('DOMContentLoaded', () => {
+        const keywordsContainer = document.getElementById('keywords-container');
+        if (!keywordsContainer) return; // Exit if container not found
+
+        const placedKeywords = []; // Array to store bounding boxes of placed keywords
+        const maxAttempts = 5; // Max attempts to find a non-colliding spot
+
+        // Updated, cooler keyword list
+        const keywords = [
+            'cognition', 'synthesis', 'emergent', 'flux', 'vector',
+            'manifold', 'latent space', 'seed', 'genesis', 'axiom',
+            'node', 'reflexion', 'singularity', 'noosphere', 'cipher',
+            'algorithm', 'heuristic', 'nexus', 'continuum', 'substrate',
+            'adaptive', 'recursive', 'infinite', 'evolve', 'create'
+        ];
+        // Increase number of keywords
+        const numKeywords = 80;
+
+        // Helper function to check for rectangle overlap
+        function checkOverlap(rect1, rect2) {
+            // Add some padding to prevent words touching directly
+            const padding = 5; 
+            return (
+                rect1.left < rect2.right + padding &&
+                rect1.right + padding > rect2.left &&
+                rect1.top < rect2.bottom + padding &&
+                rect1.bottom + padding > rect2.top
+            );
+        }
+
+        function addRandomKeyword(keyword) {
+            const keywordElement = document.createElement('span');
+            keywordElement.classList.add('bg-keyword');
+            keywordElement.textContent = keyword;
+
+            // Append temporarily to measure dimensions
+            keywordElement.style.visibility = 'hidden';
+            keywordElement.style.position = 'absolute'; // Needed for getBoundingClientRect
+            keywordsContainer.appendChild(keywordElement);
+            const rect = keywordElement.getBoundingClientRect();
+            keywordsContainer.removeChild(keywordElement);
+            keywordElement.style.visibility = 'visible';
+
+            let attempts = 0;
+            let placed = false;
+
+            while (attempts < maxAttempts && !placed) {
+                // Random position adjusted for element size
+                const maxX = window.innerWidth - (rect.width > 0 ? rect.width : 100);
+                const maxY = window.innerHeight - (rect.height > 0 ? rect.height : 20);
+                const xPos = Math.max(0, Math.random() * maxX);
+                const yPos = Math.max(0, Math.random() * maxY);
+
+                const potentialRect = {
+                    left: xPos,
+                    top: yPos,
+                    right: xPos + rect.width,
+                    bottom: yPos + rect.height
+                };
+
+                let collision = false;
+                for (const placedRect of placedKeywords) {
+                    if (checkOverlap(potentialRect, placedRect)) {
+                        collision = true;
+                        break;
+                    }
+                }
+
+                if (!collision) {
+                    keywordElement.style.left = `${xPos}px`;
+                    keywordElement.style.top = `${yPos}px`;
+
+                    // Random rotation 
+                    const rotation = (Math.random() - 0.5) * 30;
+                    keywordElement.style.transform = `rotate(${rotation}deg)`;
+
+                    keywordsContainer.appendChild(keywordElement);
+                    placedKeywords.push(potentialRect); // Store the bounding box
+                    placed = true;
+                }
+                attempts++;
+            }
+            // If placement failed after maxAttempts, the keyword is simply not added.
+        }
+
+        // Add keywords after DOM is ready
+        for (let i = 0; i < numKeywords; i++) {
+            const randomIndex = Math.floor(Math.random() * keywords.length);
+            addRandomKeyword(keywords[randomIndex]);
+        }
+    });
+
+  </script>
 
 </body>
 

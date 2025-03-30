@@ -1,146 +1,101 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+@keyframes pulse {
+    0%, 100% {
+      /* Sharper shadow */
+      text-shadow: 0 0 4px #00ffcc, 0 0 8px #00ffcc;
+    }
+    50% {
+      /* Brighter, slightly more spread */
+      text-shadow: 0 0 8px #00ffcc, 0 0 16px #00ffcc, 0 0 2px #fff;
+    }
+  }
 
-body {
-  background-color: #f9f9f9;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+  @keyframes backgroundShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+  }
 
-.container {
-  background-color: #fff;
-  padding: 2em;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-  max-width: 800px;
-  width: 100%;
-}
+  body {
+    background: linear-gradient(270deg, #1a1a1a, #121212, #0a0a0a);
+    background-size: 600% 600%;
+    animation: backgroundShift 15s ease infinite;
+    color: #e0e0e0; /* Light grey text */
+    font-family: 'Inter', sans-serif; /* Sleeker, elegant font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    overflow: hidden; /* Hide scrollbars */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Removed broad text-shadow and animation from body */
+    /* text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; */
+    /* animation: pulse 2s infinite ease-in-out; */
+  }
 
-.header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2em;
-}
+  .container {
+    max-width: 800px;
+  }
 
-.profile-pic {
-  flex: 0 0 100px;
-  margin-right: 1em;
-}
+  h1 {
+    font-size: 3rem;
+    color: #00ffcc; /* Edgy cyan/teal color */
+    margin-bottom: 1rem;
+    /* Apply refined pulse animation only to h1 */
+    animation: pulse 1.8s infinite ease-in-out;
+    text-shadow: 0 0 4px #00ffcc, 0 0 8px #00ffcc; /* Initial state matching pulse */
+  }
 
-.profile-pic img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-}
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #a0a0a0; /* Slightly dimmer text */
+  }
 
-.header-content {
-  flex: 1;
-}
+  .highlight {
+      color: #ffffff;
+      font-weight: bold;
+      /* Add subtle static neon glow */
+      text-shadow: 0 0 6px rgba(0, 255, 204, 0.7);
+  }
 
-.header-content h1 {
-  font-size: 1.5em;
-  margin-bottom: 0.5em;
-}
+  /* Coordinate Display Styles */
+  #coords-display {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    color: #a0a0a0; /* Dim text */
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    z-index: 10;
+    pointer-events: none; /* Make sure it doesn't interfere with mouse events */
+  }
 
-.location {
-  color: #666;
-  font-size: 0.9em;
-  margin-bottom: 1em;
-}
+  /* Background Keywords Styles */
+  #keywords-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Behind main content */
+    pointer-events: none; /* Prevent interaction */
+  }
 
-.headers a {
-  color: #333;
-  text-decoration: none;
-  margin-right: 0.5em;
-  font-size: 1.2em;
-}
+  .bg-keyword {
+    position: absolute;
+    /* Make color even fainter for elegance */
+    color: rgba(224, 224, 224, 0.05);
+    /* Make font size smaller */
+    font-size: 1rem;
+    white-space: nowrap; /* Prevent wrapping */
+    user-select: none; /* Prevent selection */
+  }
 
-.headers a:hover {
-  color: #0073e6;
-}
-
-.content section {
-  margin-bottom: 2em;
-}
-
-.content h2 {
-  font-size: 1.3em;
-  margin-bottom: 0.5em;
-  color: #333;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 0.5em;
-}
-
-.blog-list {
-  list-style-type: none;
-}
-
-.blog-list li {
-  margin-bottom: 1em;
-}
-
-.blog-list a {
-  text-decoration: none;
-  color: #0073e6;
-  font-size: 1.1em;
-}
-
-.blog-list a:hover {
-  text-decoration: underline;
-}
-
-.project-list {
-  list-style-type: none;
-}
-
-.project-list li {
-  margin-bottom: 1.5em;
-}
-
-.project-link {
-  text-decoration: none;
-  color: #0073e6;
-  font-size: 1.1em;
-  font-weight: bold;
-}
-
-.project-link:hover {
-  text-decoration: underline;
-}
-
-.project-list p {
-  margin-top: 0.5em;
-  color: #666;
-  font-size: 0.9em;
-}
-
-.link-item {
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
-  padding: 1em;
-  border-radius: 5px;
-  margin-bottom: 1em;
-}
-
-.link-title {
-  text-decoration: none;
-  color: #0073e6;
-  font-size: 1.1em;
-}
-
-.link-title:hover {
-  text-decoration: underline;
-}
-
-.link-item p {
-  font-size: 0.9em;
-  color: #666;
-}
+  /* Add more edgy styles here - maybe animations, gradients, etc. */ 
