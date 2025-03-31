@@ -50,15 +50,6 @@
 
     // Start the animation with requestAnimationFrame
     animationFrameId = requestAnimationFrame(updateText);
-
-    // Clean up animation when page is hidden
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden && animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      } else if (!document.hidden && !animationFrameId) {
-        animationFrameId = requestAnimationFrame(updateText);
-      }
-    });
   </script>
 </body>
 
