@@ -9,17 +9,6 @@
     }
   }
 
-  @keyframes dotZoom {
-    0%, 100% {
-      background-size: 18px 18px;
-      background-image: radial-gradient(circle, #dedede 1px, transparent 1px);
-    }
-    50% {
-      background-size: 28px 28px;
-      background-image: radial-gradient(circle, #dedede 1.2px, transparent 1.2px);
-    }
-  }
-
   @keyframes backgroundShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -29,8 +18,8 @@
   body {
     background-color: #ffffff; /* White background */
     background-image: radial-gradient(circle, #dedede 1px, transparent 1px); /* Lighter gray dots */
+    background-size: 18px 18px;
     background-position: center center; /* Ensure pattern stays centered */
-    animation: dotZoom 10s ease-in-out infinite; /* Slower animation */
     color: #333333; /* Dark grey text for contrast */
     font-family: 'Inter', sans-serif; /* Sleeker, elegant font */
     display: flex;
