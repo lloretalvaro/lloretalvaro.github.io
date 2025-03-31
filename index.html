@@ -12,28 +12,17 @@
 </head>
 
 <body>
-
   <div class="container">
     <h1>PROJECT: <span id="dynamic-name">HORIZON</span></h1>
-    <p>Boundless intelligence converges.</p>
-    <p>Interact with emergent <span class="highlight">potential</span>. Shape what's next.</p>
-    <p>The canvas awaits. Creation is infinite.</p>
-    <!-- Add more hype content here -->
+    <p>Intelligence evolves beyond boundaries.</p>
+    <p>Shape the <span class="highlight">future</span> of creation.</p>
+    <p>The canvas awaits.</p>
   </div>
 
-  <!-- Coordinate Display Element -->
-  <div id="coords-display">x: 0, y: 0</div>
-
-  <!-- Background Keywords Container (optional, can append directly to body) -->
-  <div id="keywords-container"></div>
-
-  <!-- Add JavaScript for character animation -->
   <script>
     const targetElement = document.getElementById('dynamic-name');
-    // Simplified character set for a cleaner look
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-";
     const nameLength = 7; // Length of "HORIZON"
-    // Slower update interval for a smoother feel
     const updateInterval = 200; // Milliseconds between updates
 
     let intervalId = null;
@@ -55,113 +44,7 @@
 
     // Start the animation
     intervalId = setInterval(updateText, updateInterval);
-
-    // --- Coordinate Display Logic --- 
-    const coordsDisplay = document.getElementById('coords-display');
-
-    function updateCoords(event) {
-        if (coordsDisplay) {
-            coordsDisplay.textContent = `x: ${event.clientX}, y: ${event.clientY}`;
-        }
-    }
-
-    window.addEventListener('mousemove', updateCoords);
-
-    // --- Background Keywords Logic --- 
-    document.addEventListener('DOMContentLoaded', () => {
-        const keywordsContainer = document.getElementById('keywords-container');
-        if (!keywordsContainer) return; // Exit if container not found
-
-        const placedKeywords = []; // Array to store bounding boxes of placed keywords
-        const maxAttempts = 5; // Max attempts to find a non-colliding spot
-
-        // Updated, cooler keyword list
-        const keywords = [
-            'cognition', 'synthesis', 'emergent', 'flux', 'vector',
-            'manifold', 'latent space', 'seed', 'genesis', 'axiom',
-            'node', 'reflexion', 'singularity', 'noosphere', 'cipher',
-            'algorithm', 'heuristic', 'nexus', 'continuum', 'substrate',
-            'adaptive', 'recursive', 'infinite', 'evolve', 'create'
-        ];
-        // Increase number of keywords
-        const numKeywords = 80;
-
-        // Helper function to check for rectangle overlap
-        function checkOverlap(rect1, rect2) {
-            // Add some padding to prevent words touching directly
-            const padding = 5; 
-            return (
-                rect1.left < rect2.right + padding &&
-                rect1.right + padding > rect2.left &&
-                rect1.top < rect2.bottom + padding &&
-                rect1.bottom + padding > rect2.top
-            );
-        }
-
-        function addRandomKeyword(keyword) {
-            const keywordElement = document.createElement('span');
-            keywordElement.classList.add('bg-keyword');
-            keywordElement.textContent = keyword;
-
-            // Append temporarily to measure dimensions
-            keywordElement.style.visibility = 'hidden';
-            keywordElement.style.position = 'absolute'; // Needed for getBoundingClientRect
-            keywordsContainer.appendChild(keywordElement);
-            const rect = keywordElement.getBoundingClientRect();
-            keywordsContainer.removeChild(keywordElement);
-            keywordElement.style.visibility = 'visible';
-
-            let attempts = 0;
-            let placed = false;
-
-            while (attempts < maxAttempts && !placed) {
-                // Random position adjusted for element size
-                const maxX = window.innerWidth - (rect.width > 0 ? rect.width : 100);
-                const maxY = window.innerHeight - (rect.height > 0 ? rect.height : 20);
-                const xPos = Math.max(0, Math.random() * maxX);
-                const yPos = Math.max(0, Math.random() * maxY);
-
-                const potentialRect = {
-                    left: xPos,
-                    top: yPos,
-                    right: xPos + rect.width,
-                    bottom: yPos + rect.height
-                };
-
-                let collision = false;
-                for (const placedRect of placedKeywords) {
-                    if (checkOverlap(potentialRect, placedRect)) {
-                        collision = true;
-                        break;
-                    }
-                }
-
-                if (!collision) {
-                    keywordElement.style.left = `${xPos}px`;
-                    keywordElement.style.top = `${yPos}px`;
-
-                    // Random rotation 
-                    const rotation = (Math.random() - 0.5) * 30;
-                    keywordElement.style.transform = `rotate(${rotation}deg)`;
-
-                    keywordsContainer.appendChild(keywordElement);
-                    placedKeywords.push(potentialRect); // Store the bounding box
-                    placed = true;
-                }
-                attempts++;
-            }
-            // If placement failed after maxAttempts, the keyword is simply not added.
-        }
-
-        // Add keywords after DOM is ready
-        for (let i = 0; i < numKeywords; i++) {
-            const randomIndex = Math.floor(Math.random() * keywords.length);
-            addRandomKeyword(keywords[randomIndex]);
-        }
-    });
-
   </script>
-
 </body>
 
 </html>

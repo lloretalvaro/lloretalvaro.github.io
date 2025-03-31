@@ -1,11 +1,11 @@
 @keyframes pulse {
     0%, 100% {
-      /* Sharper shadow */
-      text-shadow: 0 0 4px #00ffcc, 0 0 8px #00ffcc;
+      /* Subtle shadow */
+      text-shadow: 0 0 2px #9f7aea, 0 0 4px #9f7aea;
     }
     50% {
-      /* Brighter, slightly more spread */
-      text-shadow: 0 0 8px #00ffcc, 0 0 16px #00ffcc, 0 0 2px #fff;
+      /* Slightly brighter */
+      text-shadow: 0 0 4px #9f7aea, 0 0 8px #9f7aea;
     }
   }
 
@@ -16,23 +16,20 @@
   }
 
   body {
-    background: linear-gradient(270deg, #1a1a1a, #121212, #0a0a0a);
-    background-size: 600% 600%;
-    animation: backgroundShift 15s ease infinite;
-    color: #e0e0e0; /* Light grey text */
+    background-color: #ffffff; /* White background */
+    background-image: radial-gradient(circle, #e0e0e0 1px, transparent 1px); /* Softer gray dots */
+    background-size: 20px 20px; /* Increased spacing */
+    color: #333333; /* Dark grey text for contrast */
     font-family: 'Inter', sans-serif; /* Sleeker, elegant font */
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center; /* Added for horizontal centering */
     min-height: 100vh;
     text-align: center;
     overflow: hidden; /* Hide scrollbars */
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
-    /* Removed broad text-shadow and animation from body */
-    /* text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; */
-    /* animation: pulse 2s infinite ease-in-out; */
   }
 
   .container {
@@ -41,24 +38,20 @@
 
   h1 {
     font-size: 3rem;
-    color: #00ffcc; /* Edgy cyan/teal color */
+    color: #805ad5; /* Rich violet color */
     margin-bottom: 1rem;
-    /* Apply refined pulse animation only to h1 */
-    animation: pulse 1.8s infinite ease-in-out;
-    text-shadow: 0 0 4px #00ffcc, 0 0 8px #00ffcc; /* Initial state matching pulse */
+    animation: pulse 2.5s infinite ease-in-out; /* Slower pulse for subtlety */
   }
 
   p {
     font-size: 1.2rem;
     line-height: 1.6;
-    color: #a0a0a0; /* Slightly dimmer text */
+    color: #555555; /* Darker gray for legibility */
   }
 
   .highlight {
-      color: #ffffff;
+      color: #9f7aea; /* Lighter violet that complements the heading */
       font-weight: bold;
-      /* Add subtle static neon glow */
-      text-shadow: 0 0 6px rgba(0, 255, 204, 0.7);
   }
 
   /* Coordinate Display Styles */
