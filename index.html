@@ -24,27 +24,41 @@
     const targetElement = document.getElementById('dynamic-name');
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-";
     const nameLength = 7; // Length of "HORIZON"
-    const updateInterval = 200; // Milliseconds between updates
-
-    let intervalId = null;
+    const updateInterval = 300; // Slower updates for smoother animation
+    
+    let lastUpdate = 0;
+    let animationFrameId = null;
 
     function generateRandomString(length) {
       let result = '';
       const charactersLength = chars.length;
-      for ( let i = 0; i < length; i++ ) {
+      for (let i = 0; i < length; i++) {
         result += chars.charAt(Math.floor(Math.random() * charactersLength));
       }
       return result;
     }
 
-    function updateText() {
+    function updateText(timestamp) {
+      if (!lastUpdate || timestamp - lastUpdate >= updateInterval) {
         if (targetElement) {
-            targetElement.textContent = generateRandomString(nameLength);
+          targetElement.textContent = generateRandomString(nameLength);
         }
+        lastUpdate = timestamp;
+      }
+      animationFrameId = requestAnimationFrame(updateText);
     }
 
-    // Start the animation
-    intervalId = setInterval(updateText, updateInterval);
+    // Start the animation with requestAnimationFrame
+    animationFrameId = requestAnimationFrame(updateText);
+
+    // Clean up animation when page is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      } else if (!document.hidden && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(updateText);
+      }
+    });
   </script>
 </body>
 
