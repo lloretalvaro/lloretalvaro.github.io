@@ -44,6 +44,15 @@
     box-sizing: border-box;
   }
 
+  /* Disable dot animation on mobile devices */
+  @media (max-width: 768px) {
+    body {
+      animation: none;
+      background-size: 18px 18px;
+      background-image: radial-gradient(circle, #dedede 1px, transparent 1px);
+    }
+  }
+
   .container {
     max-width: 800px;
   }
