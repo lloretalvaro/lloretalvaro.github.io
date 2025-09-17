@@ -1,55 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <title>Something big is coming...</title>
+  <title>Alvaro Lloret</title>
 </head>
-
 <body>
   <div class="container">
-    <h1>PROJECT: <span id="dynamic-name">HORIZON</span></h1>
-    <p>Currently working on next gen creators' tools.</p>
-    <p>Shape the <span class="highlight">future</span> of creation.</p>
-    <p>Lead the new wave.</p>
-    <a href="https://tally.so/r/3E6M4L" class="cta-button" target="_blank">Join the waitlist</a>
+    <h1>Building something new.</h1>
+    <p>Exciting things are in the works. Stay tuned.</p>
   </div>
-
-  <script>
-    const targetElement = document.getElementById('dynamic-name');
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-";
-    const nameLength = 5; // Length of "HORIZON"
-    const updateInterval = 250;
-    
-    let lastUpdate = 0;
-    let animationFrameId = null;
-
-    function generateRandomString(length) {
-      let result = '';
-      const charactersLength = chars.length;
-      for (let i = 0; i < length; i++) {
-        result += chars.charAt(Math.floor(Math.random() * charactersLength));
-      }
-      return result;
-    }
-
-    function updateText(timestamp) {
-      if (!lastUpdate || timestamp - lastUpdate >= updateInterval) {
-        if (targetElement) {
-          targetElement.textContent = generateRandomString(nameLength);
-        }
-        lastUpdate = timestamp;
-      }
-      animationFrameId = requestAnimationFrame(updateText);
-    }
-
-    animationFrameId = requestAnimationFrame(updateText);
-  </script>
 </body>
-
 </html>
